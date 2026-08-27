@@ -1,0 +1,19 @@
+Grille de critères de sécurité fournisseur (provisoire)
+
+1. Chiffrement des données (critère critique)
+Les données sensibles doivent être chiffrées au repos (ex: AES-256) et en transit (ex: TLS 1.2+).
+
+2. Gestion des accès (critère critique)
+Une authentification forte (MFA) doit être en place pour tout accès aux systèmes contenant des données clients. Les droits d'accès doivent être revus régulièrement.
+
+3. Gestion des incidents (critère critique)
+Une procédure documentée de réponse aux incidents de sécurité doit exister, avec des délais de détection et de notification définis.
+
+4. Continuité d'activité (critère important)
+Un plan de reprise après sinistre doit être en place, avec des sauvegardes régulières testées.
+
+5. Certifications (critère secondaire)
+La possession de certifications reconnues (ISO 27001, SOC 2) est un plus, non obligatoire.
+
+6. Historique de sécurité (critère secondaire)
+L'absence de faille de sécurité majeure connue au cours des trois dernières années est attendue.
