@@ -15,15 +15,18 @@ class RiskScorerAgent:
 
     def score(self, results: List[ComplianceResult]) -> ComplianceCounts:
         if not results:
-            return ComplianceCounts(success=False, error="Aucun résultat à compter.")
+            return ComplianceCounts(success=False, error="Aucun resultat a compter.")
 
-        conforme = sum(1 for r in results if r.status == "Conforme")
-        partiel = sum(1 for r in results if r.status == "Partiellement conforme")
-        non_conforme = sum(1 for r in results if r.status == "Non conforme")
+        # Exclut les "Non applicable" du decompte (ne comptent ni pour ni contre la conformite)
+        evaluated = [r for r in results if r.status != "Non applicable"]
+
+        conforme = sum(1 for r in evaluated if r.status == "Conforme")
+        partiel = sum(1 for r in evaluated if r.status == "Partiellement conforme")
+        non_conforme = sum(1 for r in evaluated if r.status == "Non conforme")
 
         return ComplianceCounts(
             success=True,
-            total_questions=len(results),
+            total_questions=len(evaluated),
             conforme_count=conforme,
             partiellement_conforme_count=partiel,
             non_conforme_count=non_conforme,

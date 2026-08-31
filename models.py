@@ -63,7 +63,7 @@ class ComplianceResult(BaseModel):
     requirement_id: str
     criterion: str
     status: str
-    score: int              # ← nouveau : 5 (Conforme) / 3 (Partiel) / 1 (Non conforme)
+    score: Optional[int] = None   # ← modifie: int devient Optional[int] = None      # ← nouveau : 5 (Conforme) / 3 (Partiel) / 1 (Non conforme)
     justification: str
     importance: str
     proof_link_checked: bool = False
